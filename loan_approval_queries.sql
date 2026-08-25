@@ -1,0 +1,33 @@
+USE loan_approval_db;
+SELECT COUNT(*) AS Total_Applicants FROM loan_data;
+SELECT Loan_Status, COUNT(*) AS Total FROM loan_data GROUP BY Loan_Status;
+SELECT AVG(Credit_Score) AS Average_Credit_Score FROM loan_data;
+SELECT AVG(Person_Income) AS Average_Income FROM loan_data;
+SELECT AVG(Loan_Amount) AS Average_Loan_Amount FROM loan_data;
+SELECT Gender, Loan_Status, COUNT(*) AS Total FROM loan_data GROUP BY Gender, Loan_Status;
+SELECT Education, Loan_Status, COUNT(*) AS Total FROM loan_data GROUP BY Education, Loan_Status;
+SELECT * FROM loan_data WHERE Credit_Score > 700;
+SELECT AVG(Loan_Amount) AS Avg_Approved_Loan FROM loan_data WHERE Loan_Status = 1;
+SELECT Loan_Status, AVG(Person_Income) AS Average_Income FROM loan_data GROUP BY Loan_Status;
+SELECT AVG(Loan_Status) * 100 AS Approval_Rate FROM loan_data;
+SELECT AVG(credit_Score) AS Avg_Credit_Score FROM loan_data WHERE Loan_Status = 1;
+SELECT AVG(Credit_Score) AS Avg_Credit_Score FROM loan_data WHERE Loan_Status = 0;
+SELECT MAX(Person_Income) AS Highest_Income FROM loan_data;
+SELECT MIN(Person_Income) AS Lowest_Income FROM loan_data;
+SELECT MAX(Loan_Amount) AS Highest_Loan FROM loan_data;
+SELECT Loan_Intent, AVG(Loan_Amount) AS Average_Loan FROM loan_data GROUP BY Loan_Intent;
+SELECT Loan_Intent, Loan_Status, COUNT(*) AS Total FROM loan_data GROUP BY Loan_Intent, Loan_Status ORDER BY Loan_Intent, Loan_Status;
+SELECT Home_Ownership, Loan_Status, COUNT(*) AS Total FROM loan_data GROUP BY Home_OWNERSHIP, Loan_Status;
+SELECT * FROM loan_data WHERE Credit_Score >= 700 AND Person_Income >= 50000;
+SELECT Loan_Status, AVG(Loan_Amount) AS Average_Loan_Amount FROM loan_data GROUP BY Loan_Status;
+SELECT Loan_Status, AVG(Loan_Interest_Rate) AS Average_Interest_Rate FROM loan_data GROUP BY Loan_Status;
+SELECT Education, AVG(Credit_Score) AS Average_Credit_Score FROM loan_data GROUP BY Education;
+SELECT Loan_Intent, COUNT(*) AS Total_Applicants, SUM(Loan_Status) AS Approved_Loans FROM loan_data GROUP BY Loan_intent;
+SELECT Loan_Intent, COUNT(*) AS Total_Applicants, SUM(Loan_Status) AS Approved_Loans, ROUND(AVG(Loan_Status) * 100, 2) AS Approval_Rate FROM loan_data GROUP BY Loan_Intent ORDER BY Approval_Rate DESC;
+SELECT Home_Ownership, COUNT(*) AS Total_Applicants, ROUND(AVG(Loan_Status) * 100, 2) AS Approval_Rate FROM loan_data GROUP BY Home_Ownership ORDER BY Approval_Rate DESC;
+SELECT Previous_Loan, COUNT(*) AS Total FROM loan_data GROUP BY Previous_Loan;
+SELECT Previous_Loan, COUNT(*) AS Total_Applicants, SUM(Loan_Status) AS Approved_Loans, ROUND(AVG(Loan_Status) * 100, 2) AS Approved_Rate FROM loan_Data GROUP BY Previous_Loan;
+SELECT Age, Gender, Person_Income, Credit_Score, Loan_Amount, Loan_Status FROM loan_data ORDER BY Credit_Score DESC LIMIT 10;
+SELECT Age, Person_Income, Credit_Score, Loan_Amount, Loan_Status FROM loan_data ORDER BY Loan_Amount DESC LIMIT 10;
+
+
